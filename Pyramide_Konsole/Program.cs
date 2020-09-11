@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Dynamic;
 
 namespace Pyramide_Konsole
@@ -11,6 +12,7 @@ namespace Pyramide_Konsole
 
             do
             {
+                //Console.Clear();
                 Console.WriteLine("Welche Pyramide soll ausgegeben werden?");
                 Console.WriteLine("1: Sterne, 2: Ziffer '0' außen, 3: Ziffer '0' innen, 0: Ende");
                 variante = Convert.ToInt32(Console.ReadLine());
@@ -18,13 +20,15 @@ namespace Pyramide_Konsole
                 switch (variante)
                 {
                     case 1:
-                        Console.WriteLine("Sterne");
+                        Sterne();
                         break;
                     case 2:
-                        Console.WriteLine("'0' außen");
+                        NullAußen();
                         break;
                     case 3:
-                        Console.WriteLine("'0' innen");
+                        NullInnen();
+                        break;
+                    case 0:
                         break;
                     default:
                         Console.WriteLine("Hä??");
@@ -35,6 +39,31 @@ namespace Pyramide_Konsole
             Console.WriteLine("Ende");
             Console.ReadKey();
 
+        }
+        static void Sterne()
+        {
+            int numRows = 12;                        //Anzahl der Zeilen (evtl später als Argument übergeben)
+            int blanks = numRows - 1;               //Leerzeichen 1. Zeile
+            int stars = 1;                          //Sterne in 1. Zeile
+            Console.WriteLine("Sterne\n");
+            for(int row =1;row <= numRows; row++)   //row = Zäler der aktuellen Zeile
+            {
+                string strBlank = new string(' ', blanks);
+                string strStars = new string('*', stars);
+                Console.WriteLine(strBlank + strStars);
+                blanks--;
+                stars += 2;
+            }
+        }
+
+        static void NullAußen()
+        {
+            Console.WriteLine("'0' außen\n");
+        }
+
+        static void NullInnen()
+        {
+            Console.WriteLine("'0' innen\n");
         }
     }
 }
