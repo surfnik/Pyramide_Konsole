@@ -44,7 +44,8 @@ namespace Pyramide_Konsole
         {
             int numRows = 12;                        //Anzahl der Zeilen (evtl später als Argument übergeben)
             int blanks = numRows - 1;               //Leerzeichen 1. Zeile
-            int stars = 1;                          //Sterne in 1. Zeile
+            int stars = 1;                          //Anzahl Sterne (in 1. Zeile)
+            
             Console.WriteLine("Sterne\n");
             for(int row =1;row <= numRows; row++)   //row = Zäler der aktuellen Zeile
             {
@@ -58,7 +59,24 @@ namespace Pyramide_Konsole
 
         static void NullAußen()
         {
+            int numRows = 4;                        //Anzahl der Zeilen (evtl später als Argument übergeben)
+            int blanks = numRows - 1;               //Leerzeichen 1. Zeile
+            int nums = 1;                           //Anzahl Ziffern (in 1. Zeile)
+            
             Console.WriteLine("'0' außen\n");
+            for (int row = 1; row <= numRows; row++)   //row = Zäler der aktuellen Zeile
+            {
+                string strBlank = new string(' ', blanks);
+                string strNums = ""; //new string('0',1);
+                for (int i = 0; i < row; i++)
+                    strNums += Convert.ToString(i);
+                for(int i=row-2;i>-1 ; i--)
+                    strNums += Convert.ToString(i);
+
+                Console.WriteLine(strBlank + strNums);
+                blanks--;
+                
+            }
         }
 
         static void NullInnen()
